@@ -73,9 +73,10 @@ def rotate(face,layer,direction):
             raw_copy(rubik['d'],slayer,"idx",rubik['l'],"idx","rblv-1" + "-" + slayer)
             raw_copy(rubik['r'],"idx","rblv-1" + "-" + slayer,rubik['d'],slayer,"idx")
             raw_copy(tmp,slayer,"idx",rubik['r'],"idx","rblv-1" + "-" + slayer)
-
+def draw_cube():
+    i =0
 #test
-rotate('b',1,'right')
+rotate('u',1,'left')
 print rubik['b']
 print rubik['l'],rubik['u'],rubik['r']
 print rubik['f']
