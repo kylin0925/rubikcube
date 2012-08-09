@@ -17,63 +17,31 @@ rubik={ 'b':[['l','l'],['b','b']],
         'u':[['u','u'],['u','u']],
         'd':[['d','d'],['d','d']]}
 
-arr = []
-def fill_arr(arr,n):
-    arr = [ ['' for i in range(n*4)] for i in range(n*3) ]
-    for i in range(n*1,n*2):
-        for j in range(n):
-            arr[j][i]=rubik['u'][j][i-n*1]
+#
+# print black_str(n),color_blk(u,n)
+# print color_blk(l,n),color_blk(f,n),color_blk(r,n), color_blk(b,n)
+# print black_str(n),color_blk(b,n),color_blk(d,n)
+#
+def black_str(n):
+    return "".join([black for i in range(n)])
+def color_blk(face,lv,n):
+    tmp = ""
+    if face !='l':
+        for i in range(n):
+            tmp = tmp + color_map[rubik[face][lv][i]]
+    else:
+        for i in range(n-1,-1,-1):
+            tmp = tmp + color_map[rubik[face][lv][i]]
+    return tmp
+n = 2
+for i in range(2):
+    print black_str(n)+color_blk('u',i,n)
 
-    face_order = 'lfrb'
-    for i in range(n,n*2):
-        idx = 0
-        for j in range(n*4):
-            if j != 0 and j % n ==0:
-                idx = idx+1     
+for i in range(2):
+    print color_blk('l',i,n)+color_blk('f',i,n)+color_blk('r',i,n)+ color_blk('b',i,n)
 
-            print j,idx
-            arr[i][j] = rubik[face_order[idx]][i-n][j%n]
-
-    for i in range(n*1,n*2):
-        for j in range(n*2,n*2+n):
-            arr[j][i]=rubik['d'][j-n*2][i-n]
-
-
-    #for i in range(n*3):
-    #    print arr[i]
-      
-            
-    return arr
-arr = fill_arr(arr,2)
-
-for i in range(len(arr)):
-    tmp = ''
-    for j in range(len(arr[0])):
-        if arr[i][j] == '':
-            tmp = tmp + black
-        else:
-            tmp = tmp + color_map[ arr[i][j]]
-    print tmp
-print '--------------------------------'
-print black + black + color_map['u'] + color_map['u']
-print black + black + color_map['u'] + color_map['u']
-
-print color_map['l'] + color_map['l'] + color_map['f'] + color_map['f'] +\
-    color_map['r'] + color_map['r'] + color_map['b'] + color_map['b']
-
-print color_map['l'] + color_map['l'] + color_map['f'] + color_map['f'] +\
-    color_map['r'] + color_map['r'] + color_map['b'] + color_map['b']
-
-print black + black + color_map['d'] + color_map['d']
-print black + black + color_map['d'] + color_map['d']
-
-
-
-
-
-
-
-
+for i in range(2):
+    print black_str(n)+color_blk('d',0,n)
 
 
 
