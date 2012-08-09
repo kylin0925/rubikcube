@@ -32,9 +32,9 @@ def rotate(face,layer,direction):
     if face == 'u':
         if direction == 'right':
             tmp = copy.deepcopy(rubik['b'])
-            raw_copy(rubik['r'],slayer,"idx",rubik['b'],slayer,"idx")
-            raw_copy(rubik['f'],slayer,"rblv-1-idx",rubik['r'],slayer,"idx")
-            raw_copy(rubik['l'],slayer,"idx",rubik['f'],slayer,"idx")
+            raw_copy(rubik['r'],slayer,"idx",rubik['b'],slayer,"rblv-1-idx")
+            raw_copy(rubik['f'],slayer,"idx",rubik['r'],slayer,"idx")
+            raw_copy(rubik['l'],slayer,"idx",rubik['f'],slayer,"rblv-1-idx")
             raw_copy(tmp,slayer,"rblv-1-idx",rubik['l'],slayer,"idx")
 
         elif direction == 'left':
@@ -76,7 +76,7 @@ def rotate(face,layer,direction):
 def draw_cube():
     i =0
 #test
-rotate('u',1,'left')
+rotate('u',0,'right')
 print rubik['b']
 print rubik['l'],rubik['u'],rubik['r']
 print rubik['f']
